@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -54,10 +55,14 @@ public class PersonaServiceImp implements PersonServicesInf {
         writeIntoJson(personInformation);
         return true;
     }
-
-    @Override
-    public void sortByLastName(Person person) {
-
+    
+	@Override
+    public boolean sortByName() throws IOException {
+    	ArrayList<Person> personInformation = fileRead();
+        personInformation.sort(Comparator.comparing(Person::getFirstName));
+        personInformation.forEach(System.out::println);
+        writeIntoJson(personInformation);
+        return true;
     }
 
     @Override
