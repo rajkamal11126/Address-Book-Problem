@@ -1,0 +1,20 @@
+[
+  {
+    "firstName": "Raj",
+    "lastName": "Kamal",
+    "address": "hinjewadi",
+    "city": "Pune",
+    "state": "Maharastra",
+    "zip": 496683,
+    "phoneNumber": 9874563210
+  },
+  {
+    "firstName": "Rajkamal",
+    "lastName": "KamalRaj",
+    "address": "vimanagar",
+    "city": "Pune",
+    "state": "Maharastra",
+    "zip": 496683,
+    "phoneNumber": 9874563210
+  }
+]
