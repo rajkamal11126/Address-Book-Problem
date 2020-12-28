@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public interface PersonServicesInf {
 	public Person addPerson(Person person) throws IOException;
-    public void editInfo(Person person);
-    public void deletePerson(Person person);
+    public boolean editInfo(Person person,String firstName) throws IOException;
+    public void deletePerson(String firstName) throws IOException;
     public void sortByLastName(Person person);
     public void sortByZipCode(Person person);
-    public void writeJson();
+    public void writeIntoJson(ArrayList<Person> list);
     public void printEntries();
     public ArrayList<Person> fileRead() throws IOException;
 }

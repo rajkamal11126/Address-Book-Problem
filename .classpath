@@ -33,7 +33,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
 	<classpathentry kind="lib" path="C:/Users/Rajkamal/Downloads/gson-2.8.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rajkamal/Downloads/json-simple-1.1.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Rajkamal/Downloads/jackson-core-2.12.0-rc1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Rajkamal/Downloads/jackson-databind-2.12.0.jar"/>
 	<classpathentry kind="output" path="bin/default"/>
