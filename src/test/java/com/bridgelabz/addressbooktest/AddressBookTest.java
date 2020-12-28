@@ -5,6 +5,8 @@ import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.bridgelabz.addressbook.AddressBookServiceImp;
+import com.bridgelabz.addressbook.AddressBookServiceInf;
 import com.bridgelabz.addressbook.Person;
 import com.bridgelabz.addressbook.PersonServicesInf;
 import com.bridgelabz.addressbook.PersonaServiceImp;
@@ -62,4 +64,11 @@ public class AddressBookTest {
 		boolean result = personServicesInf.printEntries();
 		Assert.assertEquals(true, result);
 	}
+	
+	 @Test
+	    public void givenAddressBook_WhenProperFileCreate_ShouldReturnTrue() throws IOException {
+	        AddressBookServiceInf addressBookServiceInf=new AddressBookServiceImp();
+	        boolean result = addressBookServiceInf.createNewAddressBook("newFile");
+	        Assert.assertEquals(true, result);
+	    }
 }
