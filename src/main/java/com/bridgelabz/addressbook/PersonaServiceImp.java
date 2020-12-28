@@ -10,22 +10,24 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-
-
-
 public class PersonaServiceImp implements PersonServicesInf {
-	public static String filepath="/Address-Book/src/main/java/com/bridgelabz/addressbook/AddressBook.json";
-    ArrayList<Person> personInformation = new ArrayList<>();
-    public Person addPerson(Person personData) throws IOException {
+	public static String filepath = "/Address-Book/src/main/java/com/bridgelabz/addressbook/AddressBook.json";
+	ArrayList<Person> personInformation = new ArrayList<>();
+
+    @Override
+    public boolean addPerson(Person personData) throws IOException {
         try {
-        	personInformation = fileRead();
-        	personInformation.add(personData);
+            personInformation = fileRead();
+            personInformation.add(personData);
             writeIntoJson(personInformation);
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return personData;
+        return false;
     }
+
+    @Override
     public boolean editInfo(Person person, String firstName) throws IOException {
         ArrayList<Person> personInformation = fileRead();
 
@@ -44,18 +46,26 @@ public class PersonaServiceImp implements PersonServicesInf {
         writeIntoJson(personInformation);
         return true;
     }
-	public void deletePerson(Person person) {
 
+    @Override
+    public boolean deletePerson(String firstName) throws IOException {
+        ArrayList<Person> personInformation = fileRead();
+        personInformation.removeIf(personDetail -> personDetail.getFirstName().equals(firstName));
+        writeIntoJson(personInformation);
+        return true;
     }
 
+    @Override
     public void sortByLastName(Person person) {
 
     }
 
+    @Override
     public void sortByZipCode(Person person) {
 
     }
 
+    @Override
     public void writeIntoJson(ArrayList<Person> list) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(list);
@@ -67,18 +77,17 @@ public class PersonaServiceImp implements PersonServicesInf {
         }
         System.out.println("Add person detail:" + json);
     }
+
+    @Override
     public void printEntries() {
 
     }
 
+    @Override
     public ArrayList<Person> fileRead() throws IOException {
-       ObjectMapper objectMapper=new ObjectMapper();
-       ArrayList<Person> personList = objectMapper.readValue(new File(filepath), new TypeReference<ArrayList<Person>>() {});
-       return personList;
+        ObjectMapper objectMapper = new ObjectMapper();
+        ArrayList<Person> personList = objectMapper.readValue(new File(filepath), new TypeReference<ArrayList<Person>>() {
+        });
+        return personList;
     }
-	@Override
-	public void deletePerson(String firstName) throws IOException {
-		// TODO Auto-generated method stub
-		
-	}
 }
