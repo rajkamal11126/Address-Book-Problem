@@ -65,10 +65,14 @@ public class PersonaServiceImp implements PersonServicesInf {
         return true;
     }
 
-    @Override
-    public void sortByZipCode(Person person) {
-
-    }
+	 @Override
+	    public boolean sortByZipCode() throws IOException {
+	        ArrayList<Person> personInformation = fileRead();
+	        personInformation.sort(Comparator.comparing(Person::getZip));
+	        personInformation.forEach(System.out::println);
+	        writeIntoJson(personInformation);
+	        return true;
+	    }
 
     @Override
     public void writeIntoJson(ArrayList<Person> list) {
@@ -85,7 +89,7 @@ public class PersonaServiceImp implements PersonServicesInf {
 
     @Override
     public void printEntries() {
-
+    	
     }
 
     @Override

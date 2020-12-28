@@ -48,4 +48,11 @@ public class AddressBookTest {
 		Assert.assertEquals(true, result);
 
 	}
+	
+	@Test
+    public void givenPersonDetail_WhenProperSortByZip_ShouldReturnTrue() throws IOException {
+        PersonServicesInf personServicesInf = new PersonaServiceImp();
+        boolean result=personServicesInf.sortByZipCode();
+        Assert.assertEquals(true, result);
+    }
 }
